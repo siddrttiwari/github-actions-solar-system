@@ -101,7 +101,6 @@ jobs:
       needs: docker
       environment: 
         name: development
-        url: https://dev.exapmle.com
       
       steps:
         - name: Checkout
@@ -120,7 +119,13 @@ jobs:
           
         - name: verify kubernetes version
           run: |
-            kubectl version --short -o yaml
+            kubectl version -o yaml
+          env:
+            KUBECONFIG: ${{ secrets.KUBECONFIG }}
+        - name: Debug Cluster Connection
+          run: |
+            kubectl cluster-info
+            kubectl get nodes
 
         - name: Fetch Ingress IP
           id: ingress-ip
