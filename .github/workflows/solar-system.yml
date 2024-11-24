@@ -16,9 +16,7 @@ jobs:
         runs-on: ubuntu-latest
         container:
           image: node:20
-          credentials:
-            username: siddrttiwari1
-            password: ${{ secrets.CONTAINER_PASSWORD }}
+          
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
