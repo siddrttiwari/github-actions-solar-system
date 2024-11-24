@@ -77,7 +77,6 @@ jobs:
       needs: [unit-testing,code-coverage]
       permissions:
         packages: write
-      if: always()
 
       steps:
         - name: checkout
